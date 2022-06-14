@@ -1,0 +1,87 @@
+*{
+    margin: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+}
+
+.cal_container{
+    display: flex;
+    /* justify-content: center; */
+    margin: auto;
+    background-color:rgb(224, 112, 164);
+    height: 100vh;
+}
+
+.calender{
+    margin: auto;
+    width: 500px;
+    /* height: 500px; */
+    background: rgb(255, 255, 255);
+   
+}
+
+.month{
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    padding:40px 30px;
+    background-color: rgb(176, 27, 149);
+}
+
+#month{
+    font-size: 30px;
+}
+
+.prev , .next{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: rgb(171, 4, 140);
+   }
+
+   .prev:hover , .next:hover{
+       background-color: rgb(171, 4, 140);
+   }
+.weekdays{
+    display: flex;
+    background-color: rgb(190, 9, 155);;
+    padding: 5px 5px;
+}
+
+.weekdays div {
+    width: 14.28%;
+    font-size: 18px;
+    text-align: center;
+}
+.days{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.days div{
+    width: 14.28%;
+    margin-bottom: 10px;
+    padding: 10px 0;
+    transition: all 0.3s;
+}
+
+.days div:hover {
+    background-color:rgb(176, 27, 149); 
+    cursor: pointer;
+}
+.today_date{
+    background-color: rgb(176, 27, 149);
+}
+
+.prev_month_date, .next_month_date{
+    color:#A9A9A9;
+}
