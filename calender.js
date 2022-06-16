@@ -1,69 +1,69 @@
-// window.alert("Hello Ritik");
 var date = new Date();
-// console.log(date);
-
-function render_body(){
-
-//For Date dynamically change
-document.getElementById("today_date").innerHTML=date.toDateString();
 
 //For Getting month as a name not by number so intialiaze month of an array
 
-var month = ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-//For Month dynamically change
-document.getElementById("month").innerHTML=month[date.getMonth()];
+//For Getting weekdays as a name not by number so intialiaze weekdays of an array
+// var days = ["sunday", "monday", "tuesday", "wednesday", "thrusday", "friday", "saturday"];
 
-//Getting end date of perticular month because every month have perticular own end date eg. 28,29,30,31
+function renderBody() {
 
-var end_date = new Date(date.getFullYear(), date.getMonth() +1,0).getDate();
+    //For Date dynamically change
+    document.getElementById("todayDate").innerHTML = date.toDateString();
 
-//1june->0== 31may->getdate = 31
-var prev_date = new Date(date.getFullYear(), date.getMonth(),0).getDate();
+    //For Month dynamically change
+    document.getElementById("month").innerHTML = months[date.getMonth()];
 
-// var next_month_date = new Date(date.getFullYear(), date.getMonth()+1).getDate();
+    //Getting end date of perticular month because every month have perticular own end date eg. 28,29,30,31
 
-var day = date.getDay();
-//so 2 occur represent tuesday
+    //(2022, 5+1,0) => (2022, 6,0).getDate() => (1july,o) => 30June
 
-var today_date = date.getDate();
-//For today date highlight purpose
+    var endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-// var today_month = date.getMonth();
+    var endDateDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
 
-var date_data = "";
+    //1june->0== 31may->getdate = 31 May
+    var prevDate = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
 
-//For previous day data 
-for(j = day; j>0; j-- ){
-    date_data += "<div class = 'prev_month_date'>" + (prev_date-j+1) + "</div>";
-}
+    // var next_month_date = new Date(date.getFullYear(), date.getMonth()+1).getDate();
 
-//For current date with perticular day
-for(i=1; i<=end_date;i++){
-    if(i == today_date){
-        date_data += "<div class ='today_date'>" + i + "</div>";
-    } else{
-    date_data += "<div>" + i + "</div>";
-    }
-}
+    const day = date.getDay();
+    //so 2 occur represent tuesday
 
+    var todayDate = date.getDate();
+    //For today date highlight purpose
 
-document.getElementsByClassName("days")[0].innerHTML =date_data;
+    let dateData = " ";
 
-}
-
-function render_month(render){
-    if(render == 'prev'){
-        date.setMonth(date.getMonth()-1);
-    } else if (render == 'next'){
-        date.setMonth(date.getMonth()+1);
+    // For previous day data 
+    for (let j = (day - 1); j > 0; j--) {
+        dateData += "<div class = 'prevMonthDate'>" + (prevDate - j + 1) + "</div>";
     }
 
-    render_body();
+    // For current date with perticular day
+    for (let i = 1; i <= endDate; i++) {
+        if (i == todayDate) {
+            dateData += "<div class ='todayDate'>" + i + "</div>";
+        } else {
+            dateData += "<div>" + i + "</div>";
+        }
+    }
+
+    document.getElementsByClassName("days")[0].innerHTML = dateData;
+
 }
-// function render_month(prev){
-//     return  date.setMonth(date.getMonth()-1);
-// }
+
+function renderMonth(render) {
+    if (render == 'prev') {
+        date.setMonth(date.getMonth() - 1);
+    } else if (render == 'next') {
+        date.setMonth(date.getMonth() + 1);
+    }
+
+    renderBody();
+}
+
 
 
 
