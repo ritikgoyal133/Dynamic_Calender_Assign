@@ -20,15 +20,20 @@ function renderBody() {
     //(2022, 5+1,0) => (2022, 6,0).getDate() => (1july,o) => 30June
 
     var endDate = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+    console.log(endDate);
 
+    
     var endDateDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+    console.log(endDateDay);//4
 
     //1june->0== 31may->getdate = 31 May
     var prevDate = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+    console.log(prevDate);
 
     // var next_month_date = new Date(date.getFullYear(), date.getMonth()+1).getDate();
 
-    const day = date.getDay();
+    const day = new Date(date.getFullYear(), date.getMonth(), 1).getDay();
+    console.log(day);
     //so 2 occur represent tuesday
 
     var todayDate = date.getDate();
@@ -37,7 +42,7 @@ function renderBody() {
     let dateData = " ";
 
     // For previous day data 
-    for (let j = (day - 1); j > 0; j--) {
+    for (let j = day; j > 0; j--) {
         dateData += "<div class = 'prevMonthDate'>" + (prevDate - j + 1) + "</div>";
     }
 
